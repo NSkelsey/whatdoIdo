@@ -1,0 +1,18 @@
+[
+  {
+    "model": "main.Activity",
+    "pk": 1,
+    "fields": {
+      "address": "10 main st",
+      "phone_num": 123123
+    }
+  },
+  {
+    "model": "main.Catergory",
+    "pk": 2,
+    "fields": {
+      "name": "volunteer"
+    }
+  },
+]
+

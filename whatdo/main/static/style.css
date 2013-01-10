@@ -1,0 +1,17 @@
+
+a {
+  color: black;
+}
+a:hover {
+  color: #555;
+}
+
+body {
+}
+
+div.center {
+  margin: 300px;
+  background: url('/static/Jterm_ringslide.png') no-repeat;
+  width: 100%;
+  height: 100%;
+}
