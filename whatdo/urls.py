@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', views.home),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^c/(?P<cat>\S+?)/(?P<act>\S+?)$', views.activity),
-    url(r'^c/(?P<cat>\S+?)$', views.suggest),
+    #url(r'^c/(?P<cat>\S+?)$', views.suggest),
     # url(r'^$', 'whatdo1.views.home', name='home'),
     # url(r'^whatdo1/', include('whatdo1.foo.urls')),
 
