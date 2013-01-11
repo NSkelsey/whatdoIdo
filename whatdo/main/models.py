@@ -13,7 +13,6 @@ class Activity(models.Model):
     catergories = models.ManyToManyField(Catergory, null=True)
     phone_num = models.CharField(max_length=200, blank=True, null=True)
     address = models.CharField(max_length=1000, blank=True, null=True)
-    photo = models.ImageField(null=True, blank=True, upload_to='acts')
     date = models.DateTimeField(null=True, blank=True)
     date_writeup = models.CharField(max_length=400,blank=True)
     ex_url = models.URLField(blank=True, null=True)
