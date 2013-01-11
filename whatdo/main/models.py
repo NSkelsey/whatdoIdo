@@ -1,4 +1,5 @@
 from django.db import models
+import urllib
 
 class Catergory(models.Model):
     name = models.CharField(max_length=120)
@@ -10,10 +11,11 @@ class Activity(models.Model):
     title = models.CharField(max_length=120, blank=True)
     name = models.CharField(max_length=200, blank=True,)
     catergories = models.ManyToManyField(Catergory, null=True)
-    phone_num = models.IntegerField(blank=True, null=True)
+    phone_num = models.CharField(max_length=200, blank=True, null=True)
     address = models.CharField(max_length=1000, blank=True, null=True)
     photo = models.ImageField(null=True, blank=True, upload_to='acts')
     date = models.DateTimeField(null=True, blank=True)
+    date_writeup = models.CharField(max_length=400,blank=True)
 
     def name_to_url(self):
         return self.name.replace(' ', '+')
@@ -22,8 +24,20 @@ class Activity(models.Model):
         return self.name
 
     def url(self):
-        s = "/c/%s/%s" % (self.catergories.all()[0], self.name_to_url())
+        cat = self.catergories.all()[0]
+        try:
+            cat = self.from_c
+        except AttributeError:
+            pass
+        s = "/c/%s/%s" % (cat, self.name_to_url())
         return s
+
+    def make_static_map(self):
+        if self.address is None:
+            return None
+        addr = urllib.quote(self.address)
+        gmap = "http://maps.googleapis.com/maps/api/staticmap?&size=400x400&sensor=false&markers=color:blue|%s" % addr
+        return gmap
 
 def url_to_name(url):
     return url.replace('+', ' ')

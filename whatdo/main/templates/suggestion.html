@@ -1,40 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class=row>
-  <div class='span7 offset1'>
+  <div class="span4 offset8">
+    <h3> <a href='/'>HOME</a></h3>
+  </div>
+</div>
+<div class=row>
+  <div class='span8 offset1'>
     <h2><a href="/volunteer">WHY DON'T YOU  {{ act.title|upper }}
     </a></h2>
   </div>
 </div>
 <div class=row>
-  <div class='span6 offset1'> 
+  <div class='span8 offset1'> 
     <h3> {{ act.name|upper }} SEEMS LIKE A GOOD PLACE TO DO THIS </h3>
   </div>
 </div>
 <div class=row>
-  <div class='span7 offset2'>
-    <h5> {{ act.address }}
-    </h5>
-  </div>
-</div>
-{% if act.phone_num %}
-<div class=row>
-  <div class='span7 offset2'>
-    <h5> Phone: {{ act.phone_num }}
-    </h5>
-  </div>
-</div>
-{% endif %}
-<div class=row>
   <div class='span2 offset1'>
     <a href="/static/commit.html" role="button" class="btn"
-      data-toggle="modal">I'd Do That</a>
+      data-toggle="modal">Yeah Bro</a>
   </div>
-  <div class='span2 offset3'>
+  <div class='span2'>
+    <a href="{{ next_act.url }}" role="button" class="btn"
+      data-toggle="modal">I can't get there</a>
+  </div>
+  <div class='span2 offset1'>
     <a href="{{ next_act.url }}" role="button" class="btn"
       data-toggle="modal">That looks awful</a>
   </div>
 </div>
+<br>
+{% if act.address %}
+<div class=row>
+  <div class='span3 offset1'>
+    <h5> {{ act.address }} 
+    </h5>
+    <h5> Phone: {{ act.phone_num }}
+    </h5>
+  </div>
+  <div class='span4'>
+    <img src= {{ act.make_static_map }}>
+  </div>
+</div>
+{% endif %}
+{% if act.phone_num %}
+<div class=row>
 
-
+</div>
+{% endif %}
 {% endblock content %}
