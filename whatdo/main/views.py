@@ -15,7 +15,6 @@ def home(request):
             RequestContext(request))
 
 def activity(request, cat, act):
-    print "not rand"
     query = models.url_to_name(act)
     act = Activity.objects.get(name=query)
     cato = Catergory.objects.get(name=cat)
@@ -24,14 +23,13 @@ def activity(request, cat, act):
         na = qset.order_by('?')[0]
         na.__setattr__('from_c', cat)
     else:
-        na = {'url': '/static/out.html'}
+        na = {'url': '/static/commit.html'}
     resp_dict = {'act': act, 'next_act': na}
     return render_to_response('suggestion.html',
             resp_dict,
             RequestContext(request))
 
 def rand_activity(request, cat, act):
-    print "rand"
     resp_dict = {}
     act = Activity.objects.get(name=models.url_to_name(act))
     resp_dict['act'] = act
