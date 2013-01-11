@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='main hero-unit'>
+  <div class=row>
+    <div class='span7'>
+      <h4> Thanks for your interest! The site is brand new so there are plenty of things for you to break.
+        Why don't you give us your friend's email so we can bother him/her about this site. </h4>
+    </div>
+  </div>
+  <div class=row>
+    <div class='span7 offset1'>
+   <form method="post" action="/commit"> {% csrf_token %}
+      {{ form }}
+      <input type=submit value=submit>
+     </form>
+  </div>
+</div>
+{% endblock content %}

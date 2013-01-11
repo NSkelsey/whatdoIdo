@@ -47,6 +47,11 @@ class Activity(models.Model):
             return self.url()
         return self.ex_url
 
+class Signup(models.Model):
+    email = models.EmailField()
+    
+    def __unicode__(self):
+        return self.email
 def url_to_name(url):
     return url.replace('+', ' ')
 

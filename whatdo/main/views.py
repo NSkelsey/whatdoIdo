@@ -1,15 +1,15 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, RequestContext
 import models
-from models import Activity, Catergory
+from models import Activity, Catergory, Signup
 from random import choice
 from IPython import embed
 import re
-
+from forms import EmailForm
 
 def home(request):
     cats = ['volunteer', 'outdoors', 'food', 'drink', 'entertain',
-            'winter', 'rents']
+            'winter', 'rents', 'club']
     resp_dict = models.get_acts_from_cats(cats)
     return render_to_response('home.html', resp_dict,
             RequestContext(request))
@@ -53,3 +53,21 @@ def random(request, last_act=False):
         url = act.url()
         url = '/r' + url[2:]
     return HttpResponseRedirect(url)
+
+def commit(request):
+    if request.method == "POST":
+        ef = EmailForm(request.POST)
+        if ef.is_valid():
+            s = Signup(email=ef.cleaned_data['email'])
+            s.save()
+        cats = ['volunteer', 'outdoors', 'food', 'drink', 'entertain',
+        'winter', 'rents']
+        resp_dict = models.get_acts_from_cats(cats)
+        return render_to_response('home.html', resp_dict,
+                    RequestContext(request))
+    else:
+        ef = EmailForm()
+        return render_to_response('commit.html',
+                {'form' : ef},
+                RequestContext(request))
+
