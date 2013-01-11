@@ -16,6 +16,7 @@ class Activity(models.Model):
     photo = models.ImageField(null=True, blank=True, upload_to='acts')
     date = models.DateTimeField(null=True, blank=True)
     date_writeup = models.CharField(max_length=400,blank=True)
+    ex_url = models.URLField(blank=True, null=True)
 
     def name_to_url(self):
         return self.name.replace(' ', '+')
@@ -36,8 +37,13 @@ class Activity(models.Model):
         if self.address is None:
             return None
         addr = urllib.quote(self.address)
-        gmap = "http://maps.googleapis.com/maps/api/staticmap?&size=400x400&sensor=false&markers=color:blue|%s" % addr
+        gmap = "http://maps.googleapis.com/maps/api/staticmap?&size=400x400&sensor=false&markers=color:green|%s&markers=color:orange|1826,University,Avenue,Charlottesville,VA,22904" % addr
         return gmap
+
+    def get_ex_url(self):
+        if not self.ex_url:
+            return self.url()
+        return self.ex_url
 
 def url_to_name(url):
     return url.replace('+', ' ')

@@ -1,40 +1,63 @@
+img.bg {
+	/* Set rules to fill background */
+	min-height: 100%;
+	min-width: 1024px;
+	
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
+	
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+}
 
-a,h2 {
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+	img.bg {
+		left: 50%;
+		margin-left: -512px;   /* 50% */
+	}
+}
+a, h2,h3 {
   color: black;
 }
-a {
-  text-decoration: underline;
+.home {
+height: 35px;
 }
-a:hover {
-  color: #395E22;
+
+div {
+  position: relative;
+}
+div.spacer {
+  height: 40px;
+}
+
+div.main {
+  height: 50%;
+  width: 50%;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  background-color:rgba(236, 236, 240, .8);
+  padding: 30px, 60px, 20px, 60px;
+}
+
+div.sug {
+  padding-top: 20px
+}
+
+div.btnrow {
+  margin-top: 20px;
+}
+
+
+div.datarow {
+  margin-top: 20px;
 }
 
 h2 {
-font-size: 225%;
+  font-size: 25px;
+  line-height: 30px;
 }
-
-div.center .top {
-  text-align: center;
-}
-div.top {
-    position: relative; 
-}
-
-div.row {
-  text-align: left;
-}
-body {
-}
-div {
-}
-div.spacer {
-  height: 60px;
-}
-#go {
-font-size: 150%;
-margin-bottom 10px;
-}
-#god {
-}
-
-
