@@ -45,7 +45,8 @@ div.main {
 }
 
 div.sug {
-  padding-top: 20px
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 div.btnrow {
